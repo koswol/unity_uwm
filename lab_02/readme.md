@@ -80,4 +80,5 @@ Manual narzędzie ProBuilder można znaleźć pod adresem: https://docs.unity3d.
 
 
 Cały rozdział poświęcony prefabrykatom: https://docs.unity3d.com/Manual/Prefabs.html
+
 Tutorial poświęcony zagnieżdżonym prefabrykatom: https://learn.unity.com/tutorial/introduction-to-nested-prefabs#
