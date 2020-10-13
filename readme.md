@@ -19,7 +19,8 @@ Zaliczenie przedmiotu odbędzie się na podstawie oceny projektu gry na temat ws
 1. [Unity Learn](https://learn.unity.com/) - niezwykle uporządkowane i bogate źródło wiedzy z samego źródła. Możliwość śledzenia postępów, zróżnicowane poziomy trudności poszczególnych tutoriali.
 2. [Unity Docs](https://docs.unity3d.com/Manual/index.html) - oficjalna dokumentacja Unity. Obejmuje zarówno opis Unity Editor jak i Unity scripting API.
 3. [Brackeys YouTube](https://www.youtube.com/channel/UCYbK_tjZ2OrIZFBvU6CCMiA) - dostępny również Discord. Niestey 18 września 2020 ogłoszono, że nowe materiały w tej formule nie będą się już pojawiały. Jednak jest tam kilkaset (!) filmów, z których można nauczyć się wielu zagadnień związanych z tworzeniem gier w środowisku Unity.
-4. [Unity tutorial CA](https://unitytutorials.ca/) - bogaty zbiór tutoriali
+4. Oficjalny kanał Unity w serwisie YouTube: https://www.youtube.com/channel/UCG08EqOAXJk_YXPDsAvReSg
 5. [Raywenderlich](https://www.raywenderlich.com/unity) - duży zbiór tutoriali (nie tylko dla Unity), również płatnych. DObra jakość materiałów.
-6. [CGCookie](https://cgcookie.com/flow/introduction-to-unity/) - bardziej kojarzony ze środowiskiem Blender 3D, ale te dwie platformy znjadują się we wspólnym ekosystemie gier video. Minusem bez wątpienia mała ilość darmowego contentu, plusem - wysoka jakość.
-7. [CGCookie YouTube](https://www.youtube.com/user/unitycookie/) - kanał YouTube grupy CGCookie.
+6. [Unity tutorial CA](https://unitytutorials.ca/) - bogaty zbiór tutoriali
+7. [CGCookie](https://cgcookie.com/flow/introduction-to-unity/) - bardziej kojarzony ze środowiskiem Blender 3D, ale te dwie platformy znjadują się we wspólnym ekosystemie gier video. Minusem bez wątpienia mała ilość darmowego contentu, plusem - wysoka jakość.
+8. [CGCookie YouTube](https://www.youtube.com/user/unitycookie/) - kanał YouTube grupy CGCookie.
