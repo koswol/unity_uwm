@@ -75,6 +75,9 @@ Zadania
 8. Poprzez Package Manager zainstaluj Pro Builder oraz Pro Grids (tu trzeba włączyć wyświetlanie Preview packages). Następnie obejrzyj https://www.youtube.com/watch?v=PUSOg5YEflM oraz https://www.youtube.com/watch?v=YtzIXCKr8Wo&t. Możesz też poszukać dokumentacji. 
 9. Za pomocą narzędzia Pro Builder stwórz model wieży zamkowej na wzór tej spod adresu https://imgur.com/r/lowpoly/X1oBRy8
 
+Manual narzędzie ProBuilder można znaleźć pod adresem: https://docs.unity3d.com/Packages/com.unity.probuilder@4.3/manual/index.html
+
 
 
 Cały rozdział poświęcony prefabrykatom: https://docs.unity3d.com/Manual/Prefabs.html
+Tutorial poświęcony zagnieżdżonym prefabrykatom: https://learn.unity.com/tutorial/introduction-to-nested-prefabs#
