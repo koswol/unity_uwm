@@ -14,6 +14,17 @@ Na początku zajęć prowadzący zaprezentuje omawiane zagadnienie wraz z przyk�
 
 Zaliczenie przedmiotu odbędzie się na podstawie oceny projektu gry na temat wspólnie ustalony z prowadzącym w zakresie, który zostanie określony w drugim tygodniu nowego semestru. Prezentacja projektu odbędzie się zdalnie w formie krótkiego gameplaya oraz odpowiedzi prowadzącego na kilka pytań dotyczących projektu (również kodu). Projekt musi być wcześniej przesłany do zatwierdzenia z zachowaniem ustalonego terminu (zostanie ustalony wspólnie ze studentami w trakcie zajęć).
 
+### **3.1 Wymagania odnośnie projektu gry
+
+Tematyka gry jest dowolna pod warunkiem, że nie łamie zasad dobrych obyczajów i ogólnie przyjętych norm społecznych. Jeżeli student nie zaproponuje własnego tematu, prowadzący wskaże temat takiego projektu.
+
+W projekcie gry należy uwzględnić:
+
+1. Możliwość interakcji za pomocą klawiatury i/lub myszy komputerowej.
+2. Należy użyć komponentów wykorzystujących silnik fizyczny Unity (Rigidbody, Rigidbody2D).
+3. W projekcie należy również umieścić elementy UI charakterystyczne dla danego typu gry (score, speed, reset, start, itp.)
+4. Należy użyć również co najmniej jednego pliku audio, który albo będzie muzyką w tle albo dźwiękiem jakiegoś zdarzenia.
+
 ## **4. Polecane zasoby do nauki silnika Unity**
 
 1. [Unity Learn](https://learn.unity.com/) - niezwykle uporządkowane i bogate źródło wiedzy z samego źródła. Możliwość śledzenia postępów, zróżnicowane poziomy trudności poszczególnych tutoriali.
