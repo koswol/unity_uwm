@@ -22,8 +22,9 @@ W projekcie gry należy uwzględnić:
 
 1. Możliwość interakcji za pomocą klawiatury i/lub myszy komputerowej.
 2. Należy użyć komponentów wykorzystujących silnik fizyczny Unity (Rigidbody, Rigidbody2D).
-3. W projekcie należy również umieścić elementy UI charakterystyczne dla danego typu gry (score, speed, reset, start, itp.)
-4. Należy użyć również co najmniej jednego pliku audio, który albo będzie muzyką w tle albo dźwiękiem jakiegoś zdarzenia.
+3. W projekcie muszą znaleźć się co najmniej 3 skrypty własne - nie będące komponentami Unity API.
+4. W projekcie należy również umieścić elementy UI charakterystyczne dla danego typu gry (score, speed, reset, start, itp.)
+5. Należy użyć również co najmniej jednego pliku audio, który albo będzie muzyką w tle albo dźwiękiem jakiegoś zdarzenia.
 
 ## **4. Polecane zasoby do nauki silnika Unity**
 
