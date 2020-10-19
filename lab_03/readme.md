@@ -139,11 +139,11 @@ public void Update {
     cube2.transform.Rotate(xAngle, yAngle, zAngle, Space.World);
 }
 ```
-> ** Klasa [Time](https://docs.unity3d.com/ScriptReference/Time.html)**
+> **Klasa [Time](https://docs.unity3d.com/ScriptReference/Time.html)**
 > Klasa ta pozwala na pracę z elementami gier związanymi z czasem. Dzięku tej klasie możemy również wyznaczać czas jaki minął od momentu wygenerowania ostatniej klatki animacji. 
 
-Opisane w manualu trzy najważniejsze skłądowe klasy ```Time```:
-* Time.time - zwraca czas, który minął od momentu uruchomienia projektu (gry)
+Opisane w manualu trzy najważniejsze składowe klasy ```Time```:
+* Time.time - zwraca czas, który minął od momentu uruchomienia projektu (gry).
 
 * Time.deltaTime - zwraca czas w sekundach jaki upłynął od momentu wygenerowania poprzedniej klatki. Wykorzystywany najczęściej aby przekształcenia, które chcemy wykonać dla naszego obiektu (ruch, rotacja) odbywały się proporcjonalnie do upływającego czasu, lub inaczej ujmując, proporcjonalnie do ilości klatek, które są generowane na sekundę.
 
@@ -175,7 +175,7 @@ public class ExampleScript : MonoBehaviour {
 }
 ```
 
-Oba przypadki różnią się znacznie efektem, który osiągniemy. W pierwszym przypadku każde wywołanie metody ```Update()``` sposowduje przesunięcie obiektu wzdłóż osi z o określoną ilość pikseli i ta prędkość (w czasie), będzie bezpośrednio zależała od wartości FPS. Drugi przykład to ruch, który odbywa się ze stałą wielkością przesunięcia na sekundę - co klatkę proporcjonalnie do FPS.
+Oba przypadki różnią się znacznie efektem, który osiągniemy. W pierwszym przypadku każde wywołanie metody ```Update()``` spowoduje przesunięcie obiektu wzdłóż osi ```z``` o określoną ilość pikseli i ta prędkość (w czasie), będzie bezpośrednio zależała od wartości FPS. Drugi przykład to ruch, który odbywa się ze stałą wielkością przesunięcia na sekundę - co klatkę proporcjonalnie do FPS.
 
 Aby dodać nieco interakcji do naszego projektu i ćwiczeń poniżej zaprezentowany został przykład poruszania obiektem w płaszczyźnie ```x``` i ```z``` za pomocą klawiatury (klawisze WASD).
 
