@@ -72,10 +72,10 @@ Zadania
 5. Teraz zmień lub dodaj nowy komponent do jednej z instancji prefabrykatu i zastosuj zmiany do prefabrykatu. Sprawdź czy zmiany zostały zastosowane do innych instancji. 
 6. Dodaj kolejną instancję prefabrykatu, dokonaj zmian w modelu np. obrót, skala jednego z jego elementów (ale nie edytując prefabrykatu tylko tę instancję). Czy zmiana pozycji jednego z elementów instancji ma wpływ na inne instancje ? Czy takie zmiany można nadpisać do prefabrykatu ?
 7. Przeciągnij zmodyfikowaną instancję do miejsca gdzie zapisany był poprzedni prefabrykat. Okno, które się pojawi da możliwość utworzenia wariantu prefabrykatu (ang. Prefab Variant). Poczytaj więcej pod adresem: https://docs.unity3d.com/Manual/PrefabVariants.html i stwórz nowy wariant prefabrykatu.
-8. Poprzez Package Manager zainstaluj Pro Builder oraz Pro Grids (tu trzeba włączyć wyświetlanie Preview packages). Następnie obejrzyj https://www.youtube.com/watch?v=PUSOg5YEflM oraz https://www.youtube.com/watch?v=YtzIXCKr8Wo&t. Możesz też poszukać dokumentacji. 
+8. Poprzez Package Manager zainstaluj Pro Builder oraz Pro Grids (tu trzeba włączyć wyświetlanie Preview packages z opcji Advanced). Następnie obejrzyj https://www.youtube.com/watch?v=PUSOg5YEflM oraz https://www.youtube.com/watch?v=YtzIXCKr8Wo&t. Możesz też poszukać dokumentacji. 
 9. Za pomocą narzędzia Pro Builder stwórz model wieży zamkowej na wzór tej spod adresu https://imgur.com/r/lowpoly/X1oBRy8
 
-Manual narzędzie ProBuilder można znaleźć pod adresem: https://docs.unity3d.com/Packages/com.unity.probuilder@4.3/manual/index.html
+Manual narzędzia ProBuilder można znaleźć pod adresem: https://docs.unity3d.com/Packages/com.unity.probuilder@4.3/manual/index.html
 
 
 
