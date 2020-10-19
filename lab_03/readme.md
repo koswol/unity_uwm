@@ -105,7 +105,7 @@ public class Skrzynia : MonoBehaviour {
 Klasą bazową dla wszystkich klas API Unity jest klasa [Object](https://docs.unity3d.com/ScriptReference/Object.html). Zachęcam do przeczytania krótkiego opisu pod adresem https://docs.unity3d.com/Manual/class-Object.html
 
 > **Klasa [Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html)**  
-> Klasa Quaternion służy do przechowywania informacji o trzech składowych obiektu opisujących jego orientację w przestrzeni trójwymiarowej. Dzięki tej klasie możemy też wyznaczać względnę parametry obrotu jaki trzeba wykonać, aby obrócić obiekt do wskazanej orientacji. W panelu inspektora kąty, które widzimy w komponencie Transform podane są jako [kąty Eulera](https://pl.wikipedia.org/wiki/K%C4%85ty_Eulera), ale w kryptach powinniśmy używać obiektu Qutarnion do manipulacji rotacją obiektów. W przeciwnym wypadku może pojawić się problem nazywany ```Gimbal lock``` (więcej: http://pananimator.pl/gimbal-lock/).
+> Klasa Quaternion służy do przechowywania informacji o trzech składowych obiektu opisujących jego orientację w przestrzeni trójwymiarowej. Dzięki tej klasie możemy też wyznaczać względnę parametry obrotu jaki trzeba wykonać, aby obrócić obiekt do wskazanej orientacji. W panelu inspektora kąty, które widzimy w komponencie Transform podane są jako [kąty Eulera](https://pl.wikipedia.org/wiki/K%C4%85ty_Eulera), ale w kryptach powinniśmy używać obiektu Quaternion do manipulacji rotacją obiektów. W przeciwnym wypadku może pojawić się problem nazywany ```Gimbal lock``` (więcej: http://pananimator.pl/gimbal-lock/).
 
 Poniższy fragment kodu obróci obiekt przypisanej do zmiennej ```from``` tak, aby jego wartości rotacji pokryły się z wartościami zapisanymi w obiekcie przypisanym do zmiennej ```to```. Trzeci parametr funkcji ```Quaternion.Slerp()``` to procent o jaki mamy zmienić rotację. Wartości zawierają się w przedziale [0, 1].
 
@@ -131,7 +131,7 @@ Manual opisujący więcej przykładów dostępny pod linkiem: https://docs.unity
 Polecam również zapoznać się z polskojezycznym artykułem, który dość obrazowo pokazuje działanie obiektów ```Quaternion```: https://connect.unity.com/p/struktura-quaternion-lerp-slerp-slerpunclamped-lerpunclamped-rotatetowards
 
 
-Możemy również wykonywać rotacje obiektów poprzez komponent ```Transform``` poprzez metody ```Transform.Rotate()``` oraz ```Tranform.Rotatearound()```, które również operują na obiektach ```Quternion```. Wartości obrotu podawane są w stopniach. Parametrem, który jeszcze musimy przekazać jest parametr ```realtiveTo```,który określa czy obrót będzie odbywał się względem lokalnych czy globalnych koordynatów (```Space.World, Space.Self```).
+Możemy również wykonywać rotacje obiektów poprzez komponent ```Transform``` poprzez metody ```Transform.Rotate()``` oraz ```Tranform.Rotatearound()```, które również operują na obiektach ```Quaternion```. Wartości obrotu podawane są w stopniach. Parametrem, który jeszcze musimy przekazać jest parametr ```realtiveTo```,który określa czy obrót będzie odbywał się względem lokalnych czy globalnych koordynatów (```Space.Self, Space.World```).
 
 ```csharp
 public void Update {
