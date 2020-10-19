@@ -8,7 +8,7 @@ Nie sposób okreslić jaka będzie dokładna lista klas z API Unity, które będ
 Link do sekcji w manualu: https://docs.unity3d.com/Manual/ScriptingImportantClasses.html
 
 > **Klasa [GameObject](https://docs.unity3d.com/ScriptReference/GameObject.html)**  
-Jest to klasa reprezentująca dowolny element, który można umieścić na scenie. Z poziomu tej klasy możemy pobierać podpięte pod obiekt komponenty lub niezrozłącznego komponentu Transform. Komponent Transform jest dostępny poprzez właściwość klasy o nazwie ```transform```.
+Jest to klasa reprezentująca dowolny element, który można umieścić na scenie. Z poziomu tej klasy możemy pobierać podpięte pod obiekt komponenty lub niezrozłączny komponent Transform. Komponent Transform jest dostępny poprzez właściwość klasy o nazwie ```transform```.
 
 ```csharp
 public class Skrzynia : MonoBehaviour {
@@ -21,7 +21,7 @@ public class Skrzynia : MonoBehaviour {
 }
 ```
 Do określenia pozycji w przestrzeni 3D możemy wykorzystać klasę [Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html) lub [Vector2](https://docs.unity3d.com/ScriptReference/Vector2.html) dla 2D.
-Referencje do pozostałych komponentów uzyskujemy w inny sposób. Możemy to zrobić w jednorazowo uruchamianej metodzie Start():
+Referencje do pozostałych komponentów uzyskujemy w inny sposób. Możemy to zrobić w jednorazowo uruchamianej metodzie ```Start()```:
 ```csharp
 public class Skrzynia : MonoBehaviour {
 
@@ -34,7 +34,7 @@ public class Skrzynia : MonoBehaviour {
     }
 }
 ```
-lub możemy wynieść zmienną do wyższego zakresu i umieścić jako pole komponentu, do którego możemy teraz odwołać się z poziomu innych skryptów lub edytować przez okno inspektora:
+lub możemy wynieść zmienną do wyższego zakresu i umieścić jako pole komponentu, do którego możemy teraz odwołać się z poziomu innych skryptów lub edytować przez okno inspektora (jeżeli usuniemy modyfikator public, to wtedy nie będzie takiej możliwości):
 ```csharp
 public class Skrzynia : MonoBehaviour {
 
@@ -47,12 +47,12 @@ public class Skrzynia : MonoBehaviour {
     }
 }
 ```
-Oczywiście należy pamiętać, że jeżeli nie przypiszemy obiektu typu Rigidbody do zmiennej rb to otrzymamy stosowny wyjatek: ```UnassignedReferenceException: The variable rb of Skrzynia has not been assigned```. Jeżeli chcemy aby na dany obiekt gry działały siły fizyczne to raczej będziemy manipulować dodanym do niego komponentem Rigidbody a nie poprzez edycję komponentu Transform.
+Oczywiście należy pamiętać, że jeżeli nie przypiszemy obiektu typu Rigidbody do zmiennej rb to otrzymamy stosowny wyjatek: ```UnassignedReferenceException: The variable rb of Skrzynia has not been assigned```. Jeżeli chcemy aby na dany obiekt gry działały siły fizyczne to będziemy manipulować dodanym do niego komponentem Rigidbody a nie poprzez edycję komponentu Transform.
 
 Jak widać w każdym powyższym fragmencie kodu każda nasza klasa dziedziczy po klasie ```MonoBehaviour```. 
 
 > **Klasa [MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html)**  
-> Jest to klasa, po której dziedziczy każdy nowy skrypt stworzony z poziomu UnityEditor. Ta klasa dostarcza mechanizm pozwalający na podpinanie tych skryptów pod obiekty gry oraz zapewnia interfejs pozwalający na umieszczenie kodu uruchamianego w określonym momencie pracy silnika lub po wystąpieniu określonego zdarzenia.
+> Jest to klasa, po której dziedziczy każdy nowy skrypt stworzony z poziomu UnityEditor. Ta klasa dostarcza mechanizm pozwalający na podpinanie skryptów pod obiekty gry oraz zapewnia interfejs pozwalający na umieszczenie kodu uruchamianego w określonym momencie pracy silnika lub po wystąpieniu określonego zdarzenia.
 
 Poniżej przykładowy pusty szablon klasy po dodaniu nowego skryptu:
 ```csharp
@@ -77,7 +77,7 @@ public class Example : MonoBehaviour
 }
 ```
 
-Nie wszystkie metody dziedziczone po klasie ```MonoBehaviour``` są tu widoczne. Metoda ```Start()``` jest wywoływana wraz z inicjalizacją obiektu czyli w momencie jego tworzenia lub załadowania sceny. Natomiast ```Update()``` uruchamiana jest raz na każdą klatkę animacji. Jeżeli kod, który zamierzamy dodać będzie manipulował właściwościami fizycznymi obiektu (poprzez Unity physic engine) to należy ten kod umieścić wewnątrz metody ```FixedUpdate()```.
+Nie wszystkie metody dziedziczone po klasie ```MonoBehaviour``` są tu widoczne. Metoda ```Start()``` jest wywoływana wraz z inicjalizacją obiektu czyli w momencie jego tworzenia lub załadowania sceny. Natomiast ```Update()``` uruchamiana jest raz na każdą klatkę animacji. Jeżeli kod, który zamierzamy dodać będzie manipulował właściwościami fizycznymi obiektu (poprzez Unity physics engine) to należy ten kod umieścić wewnątrz metody ```FixedUpdate()```.
 
 ```csharp
 public class Skrzynia : MonoBehaviour {
@@ -105,9 +105,9 @@ public class Skrzynia : MonoBehaviour {
 Klasą bazową dla wszystkich klas API Unity jest klasa [Object](https://docs.unity3d.com/ScriptReference/Object.html). Zachęcam do przeczytania krótkiego opisu pod adresem https://docs.unity3d.com/Manual/class-Object.html
 
 > **Klasa [Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html)**  
-> Klasa Quaternion służy do przechowywania informacji o trzech składowych obiektu opisujących jego orientację w przestrzeni trójwymiarowej. Dzięki tej klasie możemy też wyznaczać względnę parametry obrotu jaki trzeba wykonać, aby obrócić obiekt do wskazanej orientacji. W panelu inspektora kąty, które widzimy w komponencie Transform podane są jako [kąty Eulera](https://pl.wikipedia.org/wiki/K%C4%85ty_Eulera), ale w kryptach powinniśmy używać obiektu Quaternion do manipulacji rotacją obiektów. W przeciwnym wypadku może pojawić się problem nazywany ```Gimbal lock``` (więcej: http://pananimator.pl/gimbal-lock/).
+> Klasa Quaternion służy do przechowywania informacji o trzech składowych obiektu opisujących jego orientację w przestrzeni trójwymiarowej. Dzięki tej klasie możemy też wyznaczać względne parametry obrotu jaki trzeba wykonać, aby obrócić obiekt do wskazanej orientacji. W panelu inspektora,kąty które widzimy w komponencie Transform podane są jako [kąty Eulera](https://pl.wikipedia.org/wiki/K%C4%85ty_Eulera), ale w skryptach powinniśmy używać metod obiektu Quaternion do manipulacji rotacją obiektów. W przeciwnym wypadku może pojawić się problem nazywany ```Gimbal lock``` (więcej: http://pananimator.pl/gimbal-lock/).
 
-Poniższy fragment kodu obróci obiekt przypisanej do zmiennej ```from``` tak, aby jego wartości rotacji pokryły się z wartościami zapisanymi w obiekcie przypisanym do zmiennej ```to```. Trzeci parametr funkcji ```Quaternion.Slerp()``` to procent o jaki mamy zmienić rotację. Wartości zawierają się w przedziale [0, 1].
+Poniższy fragment kodu obróci obiekt przypisany do zmiennej ```from``` tak, aby jego wartości rotacji (orientacja) pokryły się z wartościami zapisanymi w obiekcie przypisanym do zmiennej ```to```. Trzeci parametr funkcji ```Quaternion.Slerp()``` to procent o jaki mamy zmienić rotację. Wartości zawierają się w przedziale [0, 1].
 
 ```csharp
 using UnityEngine;
@@ -117,21 +117,23 @@ public class QuaternionRotateToPosition : MonoBehaviour
     public Transform from;
     public Transform to;
 
-    private float timeCount = 0.01f;
+    // krok rotacji, wyrazony w procentach, o jaki zostanie wykonana rotacja
+    // w każdej klatce animacji
+    private float percentage = 0.01f;
 
     void Update()
     {
-        transform.rotation = Quaternion.Slerp(from.rotation, to.rotation, timeCount);
+        transform.rotation = Quaternion.Slerp(from.rotation, to.rotation, percentage);
     }
 }
 ```
 
 Manual opisujący więcej przykładów dostępny pod linkiem: https://docs.unity3d.com/Manual/class-Quaternion.html
 
-Polecam również zapoznać się z polskojezycznym artykułem, który dość obrazowo pokazuje działanie obiektów ```Quaternion```: https://connect.unity.com/p/struktura-quaternion-lerp-slerp-slerpunclamped-lerpunclamped-rotatetowards
+Polecam również zapoznać się z polskojęzycznym artykułem, który dość obrazowo pokazuje działanie klasy ```Quaternion```: https://connect.unity.com/p/struktura-quaternion-lerp-slerp-slerpunclamped-lerpunclamped-rotatetowards
 
 
-Możemy również wykonywać rotacje obiektów poprzez komponent ```Transform``` poprzez metody ```Transform.Rotate()``` oraz ```Tranform.Rotatearound()```, które również operują na obiektach ```Quaternion```. Wartości obrotu podawane są w stopniach. Parametrem, który jeszcze musimy przekazać jest parametr ```realtiveTo```,który określa czy obrót będzie odbywał się względem lokalnych czy globalnych koordynatów (```Space.Self, Space.World```).
+Możemy również wykonywać rotacje obiektów poprzez komponent ```Transform``` i metody ```Transform.Rotate()``` oraz ```Tranform.RotateAround()```, które również operują na obiektach ```Quaternion```. Wartości obrotu podawane są w stopniach. Parametrem, który jeszcze musimy przekazać jest parametr ```realtiveTo```,który określa czy obrót będzie odbywał się względem lokalnych czy globalnych koordynatów (```Space.Self, Space.World```).
 
 ```csharp
 public void Update {
@@ -140,7 +142,7 @@ public void Update {
 }
 ```
 > **Klasa [Time](https://docs.unity3d.com/ScriptReference/Time.html)**
-> Klasa ta pozwala na pracę z elementami gier związanymi z czasem. Dzięku tej klasie możemy również wyznaczać czas jaki minął od momentu wygenerowania ostatniej klatki animacji. 
+> Klasa ta pozwala na pracę z elementami gier związanymi z czasem. Dzięki tej klasie możemy również wyznaczać czas jaki minął od momentu wygenerowania ostatniej klatki animacji. 
 
 Opisane w manualu trzy najważniejsze składowe klasy ```Time```:
 * Time.time - zwraca czas, który minął od momentu uruchomienia projektu (gry).
@@ -177,7 +179,7 @@ public class ExampleScript : MonoBehaviour {
 
 Oba przypadki różnią się znacznie efektem, który osiągniemy. W pierwszym przypadku każde wywołanie metody ```Update()``` spowoduje przesunięcie obiektu wzdłóż osi ```z``` o określoną ilość pikseli i ta prędkość (w czasie), będzie bezpośrednio zależała od wartości FPS. Drugi przykład to ruch, który odbywa się ze stałą wielkością przesunięcia na sekundę - co klatkę proporcjonalnie do FPS.
 
-Aby dodać nieco interakcji do naszego projektu i ćwiczeń poniżej zaprezentowany został przykład poruszania obiektem w płaszczyźnie ```x``` i ```z``` za pomocą klawiatury (klawisze WASD).
+Aby dodać nieco interakcji do naszego projektu i ćwiczeń poniżej zaprezentowany został przykład poruszania obiektem w płaszczyźnie ```x``` i ```z``` za pomocą klawiatury (klawisze WASD). W zależności czy komponent ```Rigidbody``` będzie posiadał aktywną opcję ```useGravity``` czy nie, będziemy mogli poruszać się po platformie lub również poza nią, bez uwzględniania sił grawitacji.
 
 ```csharp
 using UnityEngine;
@@ -198,11 +200,15 @@ public class MovePlayer : MonoBehaviour
     }
     void FixedUpdate()
     {
+        // pobranie wartości zmiany pozycji w danej osi
+        // wartości są z zakresu [-1, 1]
         float mH = Input.GetAxis("Horizontal");
         float mV = Input.GetAxis("Vertical");
 
+        // tworzymy wektor prędkości
         Vector3 velocity = new Vector3(mH, 0, mV);
         velocity = velocity.normalized * speed * Time.deltaTime;
+        // wykonujemy przesunięcie Rigidbody z uwzględnieniem sił fizycznych
         rb.MovePosition(transform.position + velocity);
     }
 }
@@ -214,7 +220,7 @@ Aby kod poprawnie działał dla wybranego obiektu należy dołączyć do niego k
 
 ## Zadania
 
->W celu ujednolicenia sposobu przechowywania własnych skryptów w folderze Assets utwórz folder scripts i tam umieszczaj własne skrypty. Dla każdego zadania (poza zadaniem 1) stwórz nową scenę o nazwie równowaznej nazwie zadania (np. zadania1 lub zadanie_1). Jeżeli dla obiektów będących przedmiotem zadania zostaną stworzone prefabrykaty (zalecane) to umieszczanie obiektów na kolejnych będzie dużo łatwiejsze. Warto też wykorzystać opcję ```Save as...``` i zapisać scene, na której trzeba bazować pod nową nazwą.
+>W celu ujednolicenia sposobu przechowywania własnych skryptów w folderze Assets utwórz folder scripts i tam umieszczaj własne skrypty. Dla każdego zadania (poza zadaniem 1) stwórz nową scenę o nazwie równoważnej nazwie zadania (np. zadania1 lub zadanie_1). Jeżeli dla obiektów będących przedmiotem zadania zostaną stworzone prefabrykaty (zalecane) to umieszczanie obiektów na kolejnych scenach będzie dużo łatwiejsze. Warto też wykorzystać opcję ```Save as...``` i zapisać scenę, na której trzeba bazować, pod nową nazwą.
 
 **Zadanie 1**  
 Przeczytaj artykuł [https://docs.unity3d.com/Manual/VectorCookbook.html](https://docs.unity3d.com/Manual/VectorCookbook.html), który przypomni Ci zagadnienia związane z pojęciem wektorów odległości i sposobu na wykorzystanie tej wiedzy w środowisku Unity.
