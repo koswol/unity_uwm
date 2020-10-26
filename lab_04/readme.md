@@ -1,0 +1,118 @@
+# Lab 4 - Skrypty w Unity ciąg dalszy.
+
+
+## 1. Coroutine (współprogram)
+
+Coroutine to byt zbliżony do funkcji, który posiada możliwość wstrzymania swojego wykonania a następnie powrót do wykonania w miejscu, w którym zostało ono zakończone. W przypadku Unity tym punktem będzie klatka animacji. Aby zrozumieć lepiej ten koncept prześledź przykład poniżej.
+
+W skrypcie losowane jest 10 losowych pozycji obiektu, a następnie poprzez coroutine co określony odstęp czasu (domyślnie 3 sekundy) generowany jest kolejny obiekt i umieszczany w przestrzeni. Po dodaniu ostatniego obiektu współprogram jest zatrzymywany.
+
+> Listing 1
+```csharp
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+public class RandomCubesGenerator : MonoBehaviour
+{
+    List<Vector3> positions = new List<Vector3>();
+    public float delay = 3.0f;
+    int objectCounter = 0;
+    // obiekt do generowania
+    public GameObject block;
+
+    void Start()
+    {
+        // w momecie uruchomienia generuje 10 kostek w losowych miejscach
+        List<int> pozycje_x = new List<int>(Enumerable.Range(0, 20).OrderBy(x => Guid.NewGuid()).Take(10));
+        List<int> pozycje_z = new List<int>(Enumerable.Range(0, 20).OrderBy(x => Guid.NewGuid()).Take(10));
+        
+        for(int i=0; i<10; i++)
+        {
+            this.positions.Add(new Vector3(pozycje_x[i], 5, pozycje_z[i]));
+        }
+        foreach(Vector3 elem in positions){
+            Debug.Log(elem);
+        }
+        // uruchamiamy coroutine
+        StartCoroutine(GenerujObiekt());
+    }
+
+    void Update()
+    {
+        
+    }
+
+    IEnumerator GenerujObiekt()
+    {
+        Debug.Log("wywołano coroutine");
+        foreach(Vector3 pos in positions)
+        {
+            Instantiate(this.block, this.positions.ElementAt(this.objectCounter++), Quaternion.identity);
+            yield return new WaitForSeconds(this.delay);
+        }
+        // zatrzymujemy coroutine
+        StopCoroutine(GenerujObiekt());
+    }
+}
+
+```
+W powyższym przykładzie zastosowana została funkcja ```WaitForSeconds()```, którą poprzedza zapis ```yield return```. To właśnie w momencie tego wywołania coroutine zostaje wszymana i od tego miejsca następnie wznowiona. Dzięki tej funkcji możemy również wywoływać kod częściej niż raz na klatkę. Domyślnie współprogram jest wznawiany w kolejnej ramce animacji poprzez ```yield return null``` co pozwala na synchroniczną pracę współprogramów wraz z kolejnym wywołaniem funkcji ```Update()```.
+
+Przykład z manuala Unity pokazuje jak zsynchronizować zmianę właściwości koloru z kolejnym wywołaniem klatek animacji. W standardowej funkcji cały kod w niej zawarty zostałby wykonany w całości i tylko raz. Oczywiście moglibyśmy umieścić kod w funkcji Update i monitorować upływający czas lub ilość klatek, które zostały wygenerowane od rozpoczęcia wywołania funkcji.
+
+> Listing 2
+```csharp
+IEnumerator Fade() 
+{
+    for (float ft = 1f; ft >= 0; ft -= 0.1f) 
+    {
+        Color c = renderer.material.color;
+        c.a = ft;
+        renderer.material.color = c;
+        yield return null;
+    }
+}
+```
+
+Więcej o coroutines można przeczytać pod adresem  https://docs.unity3d.com/Manual/Coroutines.html.
+W Internecie można również nastkąć się na wiele negatywnych komentarzy na temat współprogramów i powodu, dla którego pojawiają się w Unity (brak await/async w momencie kiedy rozpoczęto prace nad silnikiem Unity). Decyzję co do ich użycia pozostawiam już każdemu z osobna.
+
+> W manualu Unity znajduje się bardzo przydatny schemat kolejności wywołac poszczególnych zdarzeń silnika Unity, którego poznanie znacznie ułatwia podjęcie decyzji gdzie umieścić dany fragment kodu. Link: https://docs.unity3d.com/Manual/ExecutionOrder.html
+
+
+## 2. Komponent [CharacterController](https://docs.unity3d.com/ScriptReference/CharacterController.html)
+
+Jest to komponent, który możemy wykorzystać aby obsłużyć ruch obiektu w świecie Unity z już zaimplementowanymi pewnymi funkcjami i założeniami, które często musimy dla poruszającej się postaci zakodować. Komponent ten służy do poruszania obiektami bez wykorzystania komponentu Rigidbody ale z uwzględnieniem wszelkich colliderów. Komponent ten posiada dołączony collider w postaci kapsuły o wysokości 2 (co oddaje mniej więcej wielkość postaci ludzkiej) i promieniu 0.5. Te parametry można zmienić poprzez okno inspektora lub z poziomu skryptu.
+
+![CharacterController in inspector](character_inspector.png)  
+Do komponentu dodano również kilka modyfikowalnych właściwości:
+* Slope limit - maksymalny kąt nachylenia jaki poruszający się obiekt jest w stanie pokonać,
+* Step Offset - maksymalna wysokość schodka od podłoża (na którym aktualnie znajduje się poruszany obiekt) jaką można pokonać,
+* Skin Width - wielkość jaką collidery (postaci i inny, który jest akurat w stanie kolizji z postacią) mogą penetrować swoje granice. Zbyt niskie wartości mogą powodować, że postać będzie "utykać" przy zderzeniach z niektórymi coliderami.
+* Min Move Distance - minimalny dystans o jaki będzie się przemieszczał obiekt, jeżeli wartość przemieszczenia jest mniejsza, obiekt nie wykona ruchu. Może to zapobiegać efektowi drgania postaci.
+
+Na obiekt kontrolowany przez ten komponent nie działają siły fizyczne i obiekt nie będzie też działał na inne obiekty np. odpychając je. Można jednak dodać takie zachowanie poprzez implementację w metodzie ```OnControllerColliderHit()```
+
+W [manualu](https://docs.unity3d.com/Manual/class-CharacterController.html) można znaleźć kilka wskazówek jak dostosować parametry komponentu na własne potrzeby.
+
+Podpięcie tego komponentu nie oznacza, że nasza postać (obiekt) będzie od razu sie poruszał poprzez wykorzystanie domyślnych kontrolerów. Musimy to samodzielnie zaprogramować. Ruch odbywa się poprzez wywołanie funkcji ```Move()``` i przekazanie obiektu ```Vector3``` jako argumentu określającego kolejną pozycję.
+
+
+
+## Zadania  
+
+**Zadanie 1**  
+Wykorzystaj kod z ```listingu 1``` i zmodyfikuj go tak, aby możliwe było:
+* określenie w inspektorze ilości obiektów losowych do wegenerowania,
+* pozycje ```x``` oraz ```z``` były pobierane z platformy, do której skrypt jest dołączany (zakładamy, że tak będzie)
+* dodaj do swojego projektu nowe materiały, tak, aby było 5 różnych do wykorzystania i przydzielaj losowo materiał w trakcie tworzenia nowego obiektu.
+
+**Zadanie 2**  
+Stwórz nową scenę i zbuduj w niej testowy poziom wykorzystując ProBuilder. Stwórz podejścia o różnym kącie nachylenia, schody i ściany. Dodaj dowolny model postaci (może być dość prosta bryła)i wykorzystaj przykładową implementację ruchu z wykorzystaniem ```CharacterController``` z dokumentacji Unity ([tu](https://docs.unity3d.com/ScriptReference/CharacterController.Move.html)). Przetestuj poziom (aktualnie ustawiając kamerę tak,żeby obejmowała cały poziom) i ewentualnie dostosuj parametry komponentu jeżeli nie można pokonać niektórych przeszkód (wzniesienia, schody).
+
+
+**Zadanie 3**  
+Podepnij kamerę pod postać tak aby była jego obiektem potomnym i ponownie sprawdź działanie programu.
