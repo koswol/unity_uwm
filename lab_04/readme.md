@@ -102,8 +102,6 @@ Podpięcie tego komponentu nie oznacza, że nasza postać (obiekt) będzie od ra
 
 
 
-## Zadania  
-
 **Zadanie 1**  
 Wykorzystaj kod z ```listingu 1``` i zmodyfikuj go tak, aby możliwe było:
 * określenie w inspektorze ilości obiektów losowych do wegenerowania,
@@ -111,8 +109,211 @@ Wykorzystaj kod z ```listingu 1``` i zmodyfikuj go tak, aby możliwe było:
 * dodaj do swojego projektu nowe materiały, tak, aby było 5 różnych do wykorzystania i przydzielaj losowo materiał w trakcie tworzenia nowego obiektu.
 
 **Zadanie 2**  
-Stwórz nową scenę i zbuduj w niej testowy poziom wykorzystując ProBuilder. Stwórz podejścia o różnym kącie nachylenia, schody i ściany. Dodaj dowolny model postaci (może być dość prosta bryła)i wykorzystaj przykładową implementację ruchu z wykorzystaniem ```CharacterController``` z dokumentacji Unity ([tu](https://docs.unity3d.com/ScriptReference/CharacterController.Move.html)). Przetestuj poziom (aktualnie ustawiając kamerę tak,żeby obejmowała cały poziom) i ewentualnie dostosuj parametry komponentu jeżeli nie można pokonać niektórych przeszkód (wzniesienia, schody).
-
+Stwórz nową scenę i zbuduj w niej testowy poziom wykorzystując ProBuilder. Stwórz podejścia o różnym kącie nachylenia, schody i ściany. Dodaj dowolny model postaci (może to być dość prosta bryła) i wykorzystaj przykładową implementację ruchu z wykorzystaniem ```CharacterController``` z dokumentacji Unity ([tu](https://docs.unity3d.com/ScriptReference/CharacterController.Move.html)). Przetestuj poziom (aktualnie ustawiając kamerę tak,żeby obejmowała cały poziom) i ewentualnie dostosuj parametry komponentu jeżeli nie można pokonać niektórych przeszkód (wzniesienia, schody).
 
 **Zadanie 3**  
 Podepnij kamerę pod postać tak aby była jego obiektem potomnym i ponownie sprawdź działanie programu.
+
+## 3. Wykorzystanie komponentu CharacterController w grze typu FPS
+
+Wykorzystanie przykładowej implementacji nie daje dobrych efektów. Poniżej oryginalna (prawie) postać przykładowego kody wykorzystania funkcji ```CharacterController.Move()```.
+
+> Listing 3  
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MoveWithCharacterController : MonoBehaviour
+{
+    private CharacterController controller;
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+    private float playerSpeed = 2.0f;
+    private float jumpHeight = 1.0f;
+    private float gravityValue = -9.81f;
+
+    private void Start()
+    {
+        // zakładamy, że komponent CharacterController jest już podpięty pod obiekt
+        controller = GetComponent<CharacterController>();
+    }
+
+    void Update()
+    {
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
+
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        controller.Move(move * Time.deltaTime * playerSpeed);
+
+        if (move != Vector3.zero)
+        {
+            gameObject.transform.forward = move;
+        }
+
+        // Changes the height position of the player..
+        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
+    }
+}
+```
+Dodajmy możliwość sterowania postacią za pomocą myszki. Mysz może poruszać się w obu osiach, ale dla obu osi implementacja będzie nieco inna. **Ruch w osi ```X``` będzie obracał obiekt wokół osi ```Y``` a ruch myszą w osi ```Y``` będzie oznaczał obracanie samej kamery, która jest do obiektu gracza podpięta jako obiekt potomny**.
+
+Kamerę powinniśmy umieścić gdzieś w okolicach "oczu" gracza lub innej postacji, ale tak, aby kamera nie była powyżej lub poniżej samej bryły gracza, co mogłoby spowodować jej przenikanie przez obiekty otoczenia. Przykładowe umieszczenie kamery na zrzucie poniżej.
+
+![camera placement](fps_camera_placement.png)
+
+
+Rozpocznijmy z prostym skryptem.
+> Listing 4  
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LookAround : MonoBehaviour
+{
+    // ruch wokół osi Y będzie wykonywany na obiekcie gracza, więc
+    // potrzebna nam referencja do niego (konkretnie jego komponentu Transform)
+    public Transform player;
+    void Start()
+    {
+        // zablokowanie kursora na środku ekranu, oraz ukrycie kursora
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // pobieramy wartości dla obu osi ruchu myszy
+        float mouseXMove = Input.GetAxis("Mouse X") * Time.deltaTime;
+        float mouseYMove = Input.GetAxis("Mouse Y") * Time.deltaTime;
+
+        // wykonujemy rotację wokół osi Y
+        player.Rotate(Vector3.up * mouseXMove);
+
+        // a dla osi X obracamy kamerę
+        transform.Rotate(new Vector3(mouseYMove, 0f, 0f), Space.Self);
+    }
+}
+```
+
+Po podpięciu skryptu pod kamerę i dodaniu referencji do naszego gracza możemy uruchomić projekt. Po wykonaniu ruchu myszą widać bardzo niewielki ruch kamery. Taka sytuacja wynika z faktu, że wartości ```Mouse X``` oraz ```Mouse Y``` zwracają wartości mniejsze od 0 i zależa od szybkości z jaką przemieszcza się kursor. Musimy więc zwiększyć te wartości. Najbardziej optymalnym podejściem będzie ustawienie go jako modyfikowalny parametr. Dodatkowo można zaobserwować zjawisko inwersji ruchu myszy dla osi Y. Możemy to zmienić poprzez zmianę znaku przekazywanej wartości ```Mouse Y```.
+
+
+> Listing 5 - zmodyfikowana wersja skryptu
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LookAround : MonoBehaviour
+{
+    // ruch wokół osi Y będzie wykonywany na obiekcie gracza, więc
+    // potrzebna nam referencja do niego (konkretnie jego komponentu Transform)
+    public Transform player;
+
+    public float sensitivity = 200f;
+
+    void Start()
+    {
+        // zablokowanie kursora na środku ekranu, oraz ukrycie kursora
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // pobieramy wartości dla obu osi ruchu myszy
+        float mouseXMove = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+        float mouseYMove = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+
+        // wykonujemy rotację wokół osi Y
+        player.Rotate(Vector3.up * mouseXMove);
+
+        // a dla osi X obracamy kamerę dla lokalnych koordynatów
+        transform.Rotate(new Vector3(-mouseYMove, 0f, 0f), Space.Self);
+
+    }
+}
+```
+
+Powinniśmy również dla nadać trochę realizmu ograniczyć obrót wokół osi X, ale to jest już przedmiotem zadania do samodzielnego wykonania. 
+
+Poruszanie się gracza aktualnie nie działa prawidłowo, a przynajmniej nie jak w większości gier typu FPS. Czas na kilka zmian w skrypcie poruszającym naszym graczem.
+
+> Listing 6 - zmodyfikowana postać skryptu ```MoveWithCharacterController```
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MoveWithCharacterController : MonoBehaviour
+{
+    private CharacterController controller;
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+    private float playerSpeed = 10.0f;
+    private float jumpHeight = 1.0f;
+    private float gravityValue = -9.81f;
+
+    private void Start()
+    {
+        // zakładamy, że komponent CharacterController jest już podpięty pod obiekt
+        controller = GetComponent<CharacterController>();
+    }
+
+    void Update()
+    {
+        float moveX = Input.GetAxis("Horizontal");
+        float moveZ = Input.GetAxis("Vertical");
+
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
+        // zmieniamy sposób poruszania się postaci
+        // Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 move = transform.right * moveX + transform.forward * moveZ;
+        controller.Move(move * Time.deltaTime * playerSpeed);
+
+        // to już nam potrzebne nie będzie
+        //if (move != Vector3.zero)
+        //{
+        //    gameObject.transform.forward = move;
+        //}
+
+        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+
+        // zgodnie ze wzorem y = (1/2 * g) * t-kwadrat 
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
+    }
+}
+```
+
+**Zadanie 4**  
+Dodaj do skryptu ```LookAround``` ograniczenie obracania kamery do -90 i +90 stopni góra-dół.
+
+**Zadanie 5**  
+Stwórz nowy obiekt na scenie imitujący płytę naciskową. Po wejściu na nią (kolizja ?) gracz powinien zostać wyrzucony w powietrze z trzykrotnie większą "siłą" niż w przypadku skoku.
+
+
+
+
