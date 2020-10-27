@@ -166,7 +166,7 @@ public class MoveWithCharacterController : MonoBehaviour
     }
 }
 ```
-Dodajmy możliwość sterowania postacią za pomocą myszki. Mysz może poruszać się w obu osiach, ale dla obu osi implementacja będzie nieco inna. **Ruch w osi ```X``` będzie obracał obiekt wokół osi ```Y``` a ruch myszą w osi ```Y``` będzie oznaczał obracanie samej kamery, która jest do obiektu gracza podpięta jako obiekt potomny**.
+Dodajmy możliwość sterowania postacią za pomocą myszki. Mysz może poruszać się w obu osiach, ale dla obu osi implementacja będzie nieco inna. **Ruch w osi ```X``` będzie obracał obiekt wokół osi ```Y``` a ruch myszą w osi ```Y``` będzie oznaczał obracanie samej kamery, która jest do obiektu gracza podpięta jako obiekt potomny - tym razem wokół osi X**.
 
 Kamerę powinniśmy umieścić gdzieś w okolicach "oczu" gracza lub innej postacji, ale tak, aby kamera nie była powyżej lub poniżej samej bryły gracza, co mogłoby spowodować jej przenikanie przez obiekty otoczenia. Przykładowe umieszczenie kamery na zrzucie poniżej.
 
@@ -208,7 +208,7 @@ public class LookAround : MonoBehaviour
 }
 ```
 
-Po podpięciu skryptu pod kamerę i dodaniu referencji do naszego gracza możemy uruchomić projekt. Po wykonaniu ruchu myszą widać bardzo niewielki ruch kamery. Taka sytuacja wynika z faktu, że wartości ```Mouse X``` oraz ```Mouse Y``` zwracają wartości mniejsze od 0 i zależa od szybkości z jaką przemieszcza się kursor. Musimy więc zwiększyć te wartości. Najbardziej optymalnym podejściem będzie ustawienie go jako modyfikowalny parametr. Dodatkowo można zaobserwować zjawisko inwersji ruchu myszy dla osi Y. Możemy to zmienić poprzez zmianę znaku przekazywanej wartości ```Mouse Y```.
+Po podpięciu skryptu pod kamerę i dodaniu referencji do naszego gracza możemy uruchomić projekt. Po wykonaniu ruchu myszą widać bardzo niewielki ruch kamery. Taka sytuacja wynika z faktu, że wartości ```Mouse X``` oraz ```Mouse Y``` zwracają wartości dość małe, zależne od szybkości z jaką przemieszcza się kursor. Jest to odległość jaką pokonał kursor w trakcie czasu wyrenderowania jednej klatki animacji. Musimy więc zwiększyć te wartości. Najbardziej optymalnym podejściem będzie ustawienie go jako modyfikowalny parametr. Dodatkowo można zaobserwować zjawisko inwersji ruchu myszy dla osi Y. Możemy to zmienić poprzez zmianę znaku przekazywanej wartości ```Mouse Y```.
 
 
 > Listing 5 - zmodyfikowana wersja skryptu
@@ -243,6 +243,7 @@ public class LookAround : MonoBehaviour
         player.Rotate(Vector3.up * mouseXMove);
 
         // a dla osi X obracamy kamerę dla lokalnych koordynatów
+        // -mouseYMove aby uniknąć ofektu mouse inverse
         transform.Rotate(new Vector3(-mouseYMove, 0f, 0f), Space.Self);
 
     }
@@ -277,16 +278,22 @@ public class MoveWithCharacterController : MonoBehaviour
 
     void Update()
     {
+        // wyciągamy wartości, aby możliwe było ich efektywniejsze wykorzystanie w funkcji
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
+        // dzięki parametrowi playerGrounded możemy dodać zachowania, które będą
+        // mogły być uruchomione dla każdego z dwóch stanów
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
         }
+
         // zmieniamy sposób poruszania się postaci
         // Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        // transform.right odpowiada za ruch wzdłuż osi x (pamiętajmy, że wartości będą zarówno dodatnie
+        // jak i ujemne, a punkt (0,0) jest na środku ekranu) a transform.forward za ruch wzdłóż osi z.
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
         controller.Move(move * Time.deltaTime * playerSpeed);
 
@@ -313,7 +320,3 @@ Dodaj do skryptu ```LookAround``` ograniczenie obracania kamery do -90 i +90 sto
 
 **Zadanie 5**  
 Stwórz nowy obiekt na scenie imitujący płytę naciskową. Po wejściu na nią (kolizja ?) gracz powinien zostać wyrzucony w powietrze z trzykrotnie większą "siłą" niż w przypadku skoku.
-
-
-
-
