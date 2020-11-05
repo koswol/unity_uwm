@@ -136,15 +136,15 @@ Najczęściej wykorzystywany komponent jeżeli chcemy minimalnym nakładem pracy
 
 4. **Kolidery kinematyczne Rigidbody**
 
-Kinematyczny komponent Rigidbody wciąż może być 'sterowany' poprzez kod oddziałujący na komponent Rigidbody, ale ignorując siły fizyczne na niego działające. Taki obiekt jednak będzie oddziaływał z materiałami fizycznymi i innymi obiektami z komponentem Rigidbody. Najczęściej używa się takiej koonfiguracji dla obiektów, które są przez większość czasu nieruchome, ale występuje potrzeba ich przemieszczenia dodatkowo działając siłą lub samym koliderem na inne obiekty (windy, drzwii, platformy itd.).
+Kinematyczny komponent Rigidbody wciąż może być 'sterowany' poprzez kod oddziałujący na komponent Rigidbody, ale ignorując siły fizyczne na niego działające. Taki obiekt jednak będzie oddziaływał z materiałami fizycznymi i innymi obiektami z komponentem Rigidbody. Najczęściej używa się takiej konfiguracji dla obiektów, które są przez większość czasu nieruchome, ale występuje potrzeba ich przemieszczenia dodatkowo działając siłą lub samym koliderem na inne obiekty (windy, drzwi, platformy itd.).
 W praktyce można również wykorzystać możliwość dynamicznego włączania i wyłączania atrybutu ```isKinematic``` w celu aktywowania lub deaktywowania oddziaływania sił fizycznych na obiekt w trakcie gry - np. symulacja działania siły wiatru w trakcie lotu, symulacja działania wybuchu na obiekt lub innych komponentów rigidbody jeżeli zaistnieje taka potrzeba.
 
 Aby się w tym wszystkim nie pogubić i dobrze zrozumieć kiedy jaki kolider zastosować (zwłaszcza dynamiczne) trzeba nieco wprawy i praktyki, ale warto mieć pod ręką tabelę, która zawiera informacje o interakcjach między koliderami: https://docs.unity3d.com/Manual/CollidersOverview.html.
 
 
-> **Wskazówka:** Stosowanie koliderów, które są mniejszych rozmiarów niż siatka obiektu w połączeniu z materiałem fizycznym pozwala na symulację zderzenia z obiektami, które wydają się miękkie.
+> **Wskazówka:** Stosowanie koliderów, które są mniejszych rozmiarów niż siatka obiektu w połączeniu z materiałem fizycznym pozwala na symulację zderzenia z obiektami, które wydają się miękkie, przenikalne.
 
-> **Wskazówka:** Ważnym aspektem jest również ustawienie parametru ```Colission Detection```, który ma wpływ na precyzję wyliczania kolizji oraz ilość cykli procesora zaangażowanych w wyliczanie kolizji. Użyj wskazówek z adresu https://docs.unity3d.com/Manual/class-Rigidbody.html. Zapamiętaj, że dla kinematycznych ciał sztywnych możliwe jest ustawienie wartości ```Discrete oraz Continuous Speculative```.
+> **Wskazówka:** Ważnym aspektem jest również ustawienie parametru ```Colission Detection```, który ma wpływ na precyzję wyliczania kolizji oraz ilość cykli procesora zaangażowanych w wyliczanie kolizji. Użyj wskazówek z adresu https://docs.unity3d.com/Manual/class-Rigidbody.html. Zapamiętaj, że dla kinematycznych ciał sztywnych możliwe jest ustawienie wartości ```Discrete oraz Continuous Speculative```. Więcej o różnicach doczytasz [tutaj](https://docs.unity3d.com/Manual/ContinuousCollisionDetection.html).
 
 ### 1.6 Inne kolidery silnika Unity
 
@@ -228,7 +228,7 @@ Teraz w przypadku zderzenia gracza z kostką czasami będą się pojawiały komu
 
 Rozważmy teraz przykład windy pionowej, która miałaby naszego gracza wynieść do góry i rozpocząć swoje działanie po jego wejściu na powierzchnię owej windy. Skoro nasza winda będzie w stanie spoczynku dopóki na nią nie wejdziemy to wykorzystanie rozwiązania z kostką nie wchodzi w grę, chyba, że chcemy kod uruchamiający windę umieścić wewnątrz klasy ```MoveWithCharacterController```, co z punktu widzenia zasad wytwarzania oprogramowania o akronimie SOLID nie jest dobrym pomysłem.
 
-Rozwiązanie tego problemu jest dobrym przykładem na wykorzystanie koliderów wyzwalaczy.
+Rozwiązanie tego problemu jest dobrym przykładem na wykorzystanie koliderów-wyzwalaczy.
 
 Budujemy platformę, która będzie naszą windą. Dodajemy kolider oraz komponent Rigidbody. Dodatkowo jako obiekt potomny dodajemy pusty obiekt, do którego dodajemy BoxCollider znajdujący się powyżej platformy. Z rozmiarem można poeksperymentować. Najważniejsze jest ustawienie opcji ```isTrigger```, która nie będzie blokowała gracza, ale będzie zgłaszała zdarzenia kolizji.
 
@@ -349,10 +349,10 @@ private void OnTriggerEnter(Collider other)
 ## **Zadania**
 
 **Zadanie 1**  
-Przygotuj skrypt i przykład platformy poruszającej się horyzontalnie w momencie, w którym gracz na nią wejdzie. Platforma ma ustalony punkt docelowy i po dotarciu do niego powinna wrócić do miejsca docelowego.
+Przygotuj skrypt i przykład platformy poruszającej się horyzontalnie w momencie, w którym gracz na nią wejdzie. Platforma ma ustalony punkt docelowy i po dotarciu do niego powinna wrócić do miejsca początkowego.
 
 **Zadanie 2**  
-Przygotuj prosty model drzwi przesuwanych poziomu (odpowiednich kształtów Cube wystarczy), który będzie otwierany jeżeli gracz znajdzie się odpowiednio blisko obu stron drzwi.
+Przygotuj prosty model drzwi przesuwanych poziomo, które będą otwierane jeżeli gracz znajdzie się odpowiednio blisko jednej ze stron drzwi.
 
 **Zadanie 3**  
 Z przykładów z zajęć oraz zadania 1 przygotuj skrypt, który pozwoli na obsłużenie platformy, która może poruszać się dowolnie w przestrzeni od punktu do punktu. Punkty (Vector3) są przechowywane w dowolnej wybranej kolekcji. Platforma porusza się od pierwszego do kolejnego punktu i jak dotrze do ostatniego punktu zawraca (czyli podąża tą samą drogą powrotną).

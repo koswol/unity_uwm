@@ -189,6 +189,8 @@ public class LookAround : MonoBehaviour
     void Start()
     {
         // zablokowanie kursora na środku ekranu, oraz ukrycie kursora
+        // aby w UnityEditor ponownie pojawił się kursor (właściwie deaktywowac kursor w trybie play)
+        // wciskamy klawisz ESC
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -305,10 +307,12 @@ public class MoveWithCharacterController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
+            // wzór na siłę 
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
 
-        // zgodnie ze wzorem y = (1/2 * g) * t-kwadrat 
+        // prędkość swobodnego opadania zgodnie ze wzorem y = (1/2 * g) * t-kwadrat 
+        // okazuje się, że jest to zbyt wolne opadanie, więc zastosowano g * t-kwadrat
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
