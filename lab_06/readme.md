@@ -42,5 +42,3 @@ Blender: https://www.blender.org/download/
 
 
 ## Czekam na ciekawe projekty!
-
-
