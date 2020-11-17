@@ -89,7 +89,7 @@ Aby ułatwić sobie proces budowania szkieletu najwygodniej jest przygotować Sp
 > * https://www.youtube.com/watch?v=vap04-Py9QM
 
 
-**Wykonaj zadanie nr 3.**
+**Wykonaj zadanie nr 3 oraz 4.**
 
 
 ## Zadania
