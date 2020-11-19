@@ -37,28 +37,29 @@ Pojedynczy plik graficzny możemy zaimportować bezpośrednio z widoku `Project`
 
 W celu zapoznania się ze szczegółami dla poszczególnych typów tesktur odsyłam do obszernej dokumentacji znajdującej się pod adresem: https://docs.unity3d.com/Manual/TextureTypes.html
 
-`Sprite Mode` pozwala na określenie czy mamy do czynienia z pojedynczym Sprite'em (`Single`) czy może ze zbiorem Sprite'ów (`Multiple`) umieszczonych w jednym pliku. Możemy również przyciąć istniejącą teksturę wybierając opcję `Polygon` i następnie w `Sprite Editor` zmieniając wyświetlany obszar poprzez zmianę kształtu z opcji `Sprite Custom Outline`.
+**`Sprite Mode`** pozwala na określenie czy mamy do czynienia z pojedynczym Sprite'em (`Single`) czy może ze zbiorem Sprite'ów (`Multiple`) umieszczonych w jednym pliku. Możemy również przyciąć istniejącą teksturę wybierając opcję `Polygon` i następnie w `Sprite Editor` zmieniając wyświetlany obszar poprzez zmianę kształtu z opcji `Sprite Custom Outline`.
 
-`Pixel Per Unit` (PPU) to bardzo ważny parametr, którym określamy ile pikseli obrazu przypada na jedną jednostkę w środowisku Unity. Zaplanowanie użycia tego parametru przed przystąpieniem do prac nad grafiką jest zazwyczaj dobrym pomysłem. 
+**`Pixel Per Unit`** (PPU) to bardzo ważny parametr, którym określamy ile pikseli obrazu przypada na jedną jednostkę w środowisku Unity. Zaplanowanie użycia tego parametru przed przystąpieniem do prac nad grafiką jest zazwyczaj dobrym pomysłem. 
 
-`Mesh Type` pozwala na określenie obszaru Sprite'u, `Full Rect` to określenie obszaru jako czworobok a `Tight` to automatyczne stworzenie kształtu bazując na przezroczystych pikselach, które znajdują się w obszarze obrazu. Zazwyczaj dopasowane do nieprzezroczystych pikseli obrazu. Dla obrazów mniejszych niż 32x32 piksele uzywany jest automatycznie `Full Rect` nawet jak wybrany został parametr `Tight`.
+**`Mesh Type`** pozwala na określenie obszaru Sprite'u, `Full Rect` to określenie obszaru jako czworobok a `Tight` to automatyczne stworzenie kształtu bazując na przezroczystych pikselach, które znajdują się w obszarze obrazu. Zazwyczaj dopasowane do nieprzezroczystych pikseli obrazu. Dla obrazów mniejszych niż 32x32 piksele uzywany jest automatycznie `Full Rect` nawet jak wybrany został parametr `Tight`.
 
-`Extrude Edges` określa w pikselach jaki obszar otaczający Sprite będzie wolny - zgodnie z opisem w dokumentacji. W rzeczywistości zmiana tych parametrów nie przynosi żadnych rezultatów.
+**`Extrude Edges`** określa w pikselach jaki obszar otaczający Sprite będzie wolny - zgodnie z opisem w dokumentacji. W rzeczywistości zmiana tych parametrów nie przynosi żadnych rezultatów.
 
-`Pivot` pozwala na ustalenie punktu obrotu dla danego elementu.
+**`Pivot`** pozwala na ustalenie punktu obrotu dla danego elementu.
 
-`Generate Physics Shape` jeżeli nie został zdefiniowany niestandardowy kształt (`Custom Physics Shape`) Unity wygeneruje autoamtycznie kształ pokrywający się z krawędziami danego Sprite'u.
+**`Generate Physics Shape`** jeżeli nie został zdefiniowany niestandardowy kształt (`Custom Physics Shape`) Unity wygeneruje autoamtycznie kształ pokrywający się z krawędziami danego Sprite'u.
 
-`Remove Matte` jest ustawienie stosowane do plików PSD (Photoshop), które używają przezroczystości. Poprawia wygląd krawędzi przylegających do przezroczystego obszaru.
+**`Remove Matte`** jest ustawienie stosowane do plików PSD (Photoshop), które używają przezroczystości. Poprawia wygląd krawędzi przylegających do przezroczystego obszaru.
 
-`Read/Write Enabled` włączenie tej opcji umożliwia dostęp do danych tekstury z poziomu skryptów. 
+**`Read/Write Enabled`** włączenie tej opcji umożliwia dostęp do danych tekstury z poziomu skryptów. 
 
-`Generate Mip Maps` włączenie tej opcji przydaje się w przypadku gdy obraz będzie skalowany w widoku sceny do bardzo małych rozmiarów. Wygenerowane zostaną miniaturowe wersje tych obrazów.
+**`Generate Mip Maps`** włączenie tej opcji przydaje się w przypadku gdy obraz będzie skalowany w widoku sceny do bardzo małych rozmiarów. Wygenerowane zostaną miniaturowe wersje tych obrazów.
 
-`Wrap Mode` definiuje zachowanie obrazu kiedy uzywany jest jako kafelek ([więcej](https://docs.unity3d.com/Manual/class-TextureImporter.html#WrapMode)).
+**`Wrap Mode`** definiuje zachowanie obrazu kiedy uzywany jest jako kafelek ([więcej](https://docs.unity3d.com/Manual/class-TextureImporter.html#WrapMode)).
 
-`Filter Mode` zmienia zachowanie tekstury kiedy zostaje ona zmodyfikowana przez przekształcenia 3D. `Point` oznacza brak filtrowania (rozmycia) i stosowane jest do grafiki typu Pixel Perfect. `Bilinear` i `Trilinear` rozmywa obraz kiedy go przybliżamy.
-`Aniso level` wpływa korzystnie na jakość wyświetlanego Sprite'a kiedy widok kamery jest dkierowany na niego pod kątem ostrym.
+**`Filter Mode`** zmienia zachowanie tekstury kiedy zostaje ona zmodyfikowana przez przekształcenia 3D. `Point` oznacza brak filtrowania (rozmycia) i stosowane jest do grafiki typu Pixel Perfect. `Bilinear` i `Trilinear` rozmywa obraz kiedy go przybliżamy.
+
+**`Aniso level`** wpływa korzystnie na jakość wyświetlanego Sprite'a kiedy widok kamery jest dkierowany na niego pod kątem ostrym.
 
 Ustawienia, które znajdują się na samym dole przedstawionego powyżej okna umożliwiają dostosowanie ustawień dla poszczególnych platform, na których gra zostanie uruchomiona. `Default` zawiera domyślne ustawienia a pozostałe zakładki dla wybranych platform docelowych.
 Więcej szczegółów o możliwych ustawieniach dla wybranych parametrów znajdziesz pod linkiem: https://docs.unity3d.com/Manual/class-TextureImporter.html#platform
@@ -68,9 +69,9 @@ Więcej szczegółów o możliwych ustawieniach dla wybranych parametrów znajdz
 
 ### **Sprite Editor**
 
-`Sprite Editor` pozwala na edycję takich właściwości obrazu jak punkt obrotu, krawędzie dla skalowania typu 9-slice, niestandardowy kształt fizyczny (wykorzystywany ze zderzaczami oraz materiałami fizycznymi). To narzędzie pozwala również w trybie `Multiple` na pocięcie jednego pliku z wieloma Sprite'ami na oddzielne Sprite'y. Proces ten może być automatyczny, ręczny lub można spróbować pociąć plik automatycznie i wykonać poprawki w trybie ręcznym.
+**`Sprite Editor`** pozwala na edycję takich właściwości obrazu jak punkt obrotu, krawędzie dla skalowania typu 9-slice, niestandardowy kształt fizyczny (wykorzystywany ze zderzaczami oraz materiałami fizycznymi). To narzędzie pozwala również w trybie `Multiple` na pocięcie jednego pliku z wieloma Sprite'ami na oddzielne Sprite'y. Proces ten może być automatyczny, ręczny lub można spróbować pociąć plik automatycznie i wykonać poprawki w trybie ręcznym.
 
-Sprite Editor zawiera również narzędzie `Skinning Editor` które pozwala tworzyć szkielety złożone z kości umożliwiające tworzenie animacji w sposób dużo bardziej efektywny i dynamiczny. 
+Sprite Editor zawiera również narzędzie **`Skinning Editor`** które pozwala tworzyć szkielety złożone z kości umożliwiające tworzenie animacji w sposób dużo bardziej efektywny i dynamiczny. 
 
 > Dodatkowe materiały:
 > * https://learn.unity.com/tutorial/introduction-to-sprite-editor-sheets-2019-2
