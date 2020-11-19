@@ -104,7 +104,7 @@ Zaimportuj [grafikę](assets/mountain_landscape.png) do projektu Unity i przy po
 Przygotuj przykładową scenę wykorzystując assety z zadania 1. Warto dodać nowe warstwy na scenie oraz przypisać elementy do odpowiednich warstw oraz ustalić kolejność renderowania obiektu w warstwie. Jeżeli masz problem z kolejnością wyświetlania elementów przeczytaj https://docs.unity3d.com/2019.4/Documentation/Manual/2DSorting.html.
 
 **Zadanie 3**  
-Zaimportuj grafikę przedstawiającą [Orka](assets/orc_1_separated.png) i dodaj do niego szkielet bazując na przykładzie z labu oraz załączonych linkach z materiałami dodatkowymi. Pamiętaj o nazwaniu poszczególnych kości dla ułatwienia ich późniejszej identyfikacji.
+Zaimportuj grafikę przedstawiającą [Trolla](assets/Troll2.png) i dodaj do niego szkielet bazując na przykładzie z labu oraz załączonych linkach z materiałami dodatkowymi. Pamiętaj o nazwaniu poszczególnych kości dla ułatwienia ich późniejszej identyfikacji. "Pocięty" troll znajduje się w folderze [assets/Troll2](assets/Troll2).
 
 **Zadanie 4**  
 Dodaj szkielet na scenę, ułóż elementy w odpowiednim porządku i sprawdź czy kolejność kości jest poprawna. Dodaj komponent `Sprite Skin` i wksaż kość bazową.
