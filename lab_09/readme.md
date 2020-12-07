@@ -1,5 +1,6 @@
 # Lab 9. Tworzenie gry 2D, część 3. Wrogowie. A* pathfinding. 
 
+> Projekt startowy, który można wykorzystać: [starter](lab_9_starter_light.7z)
 
 **Zadanie 1**  
 
@@ -33,4 +34,4 @@ Obejrzyj film dostępny pod adresem https://www.youtube.com/watch?v=jvtFUfJ6CP8 
 
 Film jest podzielony na dwie części, gdzie w pierwszej wykorzystane są gotowe możliwości pakietu a w drugiej skrypt sterujący postacią wroga jest pisany krok po kroku. Wybierz jeden ze sposobów dla swojego zadania.
 
-Postać latającego bohatera możesz wykorzystać używając gotowego pakietu https://craftpix.net/freebies/free-wraith-tiny-style-2d-sprites/ lub dowolnego wybranego przez siebie.
+Postać latającego wroga możesz wykorzystać używając gotowego pakietu https://craftpix.net/freebies/free-wraith-tiny-style-2d-sprites/ lub dowolnego wybranego przez siebie.
