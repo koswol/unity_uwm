@@ -21,7 +21,7 @@ Część **Learn** pozwala na dodanie istniejących projektów gier, stworzonych
 
 Ostatnia, ale nie najmniej ważna opcja, to **Installs** gdzie możemy pobrać i zainstalować kolejne wersje środowiska, odinstalować istniejące lub zarządzać modułami dla konkretnej zainstalowanej wersji.
 
-W trakcie zajęć wykorzystywana będzie wersja 2019.4.** LTS. Jest to wersja o długim wsparciu technicznym. Pobranie i instalacja wymaga sporo czasu (dużo zależy od szybkości łącza internetowego) więc należy wybrać miejsce z wystarczająco dużą ilością wolnego miejsca. Moduły, które wybieramy na początku to:
+W trakcie zajęć wykorzystywana będzie wersja 2019.4.31f1 LTS. Jest to wersja o długim wsparciu technicznym. Pobranie i instalacja wymaga sporo czasu (dużo zależy od szybkości łącza internetowego) więc należy wybrać miejsce z wystarczająco dużą ilością wolnego miejsca. Moduły, które wybieramy na początku to:
 * **Windows Build support**, **Linux build support** lub **Mac build support** w zależności od używanego systemeu operacyjnego,
 * **Microsoft Visual Studio 2019 Community** lub **Visual Studio Code**,
 * **Documentation**.
