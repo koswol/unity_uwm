@@ -13,7 +13,7 @@ Wersję Personal pobieramy przechodząc kolejno na stronę https://unity.com/, n
 * Community
 * Installs
 
-Opcję dostępne w **Projects** pozwalają przeglądać istniejące peojekty, dodawać nowe lub zmienić wersję środowiska UNITY istniejącego projektu (tutaj nie zawsze wszystko musi pójść zgodnie z planem).
+Opcję dostępne w **Projects** pozwalają przeglądać istniejące projekty, dodawać nowe lub zmienić wersję środowiska UNITY istniejącego projektu (tutaj nie zawsze wszystko musi pójść zgodnie z planem).
 
 Część **Learn** pozwala na dodanie istniejących projektów gier, stworzonych w celach edukacyjnych. Wystarczy wybrać projekt i opcję "DOWNLOAD PROJECT". Warto zwrócić uwagę na wersję Unity, dla której projekt został stworzony, będzie to gwarancja kompatybilności.
 
@@ -21,9 +21,9 @@ Część **Learn** pozwala na dodanie istniejących projektów gier, stworzonych
 
 Ostatnia, ale nie najmniej ważna opcja, to **Installs** gdzie możemy pobrać i zainstalować kolejne wersje środowiska, odinstalować istniejące lub zarządzać modułami dla konkretnej zainstalowanej wersji.
 
-W trakcie zajęć wykorzystywana będzie wersja 2019.4.** LTS. Jest to wersja o długim wsparciu technicznym. Pobranie i instalacja wymaga sporo czasu (dużo zależy od szybkości łącza internetowego) i miejsca dyskowego więc należy wybrać miejsce z wystarczająco dużą ilością wolnego miejsca. Moduły, które wybieramy na początku to:
+W trakcie zajęć wykorzystywana będzie wersja 2019.4.** LTS. Jest to wersja o długim wsparciu technicznym. Pobranie i instalacja wymaga sporo czasu (dużo zależy od szybkości łącza internetowego) więc należy wybrać miejsce z wystarczająco dużą ilością wolnego miejsca. Moduły, które wybieramy na początku to:
 * **Windows Build support**, **Linux build support** lub **Mac build support** w zależności od używanego systemeu operacyjnego,
-* **Microsoft Visual Studio 2019 Community**,
+* **Microsoft Visual Studio 2019 Community** lub **Visual Studio Code**,
 * **Documentation**.
 
 API Unity napisane jest w języku C# i można wybrać inny edytor niż **Visual Studio 2019 Community**, ale to rozwiązanie ze względu na oficjalne wsparcie wydaje się dobrym połączeniem na start i będzie wykorzystywane w trakcie zajęć. Jendak używanie MonoDevelop czy też Visual Studio Code nie powinno powodować większych problemów. 

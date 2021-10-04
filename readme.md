@@ -12,9 +12,9 @@ Na początku zajęć prowadzący zaprezentuje omawiane zagadnienie wraz z przyk�
 
 ## **3. Zasady oceniania i zaliczenie przedmiotu**
 
-Zaliczenie przedmiotu odbędzie się na podstawie oceny projektu gry na temat wspólnie ustalony z prowadzącym w zakresie, który zostanie określony w drugim tygodniu nowego semestru. Prezentacja projektu odbędzie się zdalnie w formie krótkiego gameplaya oraz odpowiedzi prowadzącego na kilka pytań dotyczących projektu (również kodu). Projekt musi być wcześniej przesłany do zatwierdzenia z zachowaniem ustalonego terminu (zostanie ustalony wspólnie ze studentami w trakcie zajęć).
+Zaliczenie przedmiotu odbędzie się na podstawie oceny projektu gry na temat wspólnie ustalony z prowadzącym, aktywności w trakcie zajęć oraz obecności. Prezentacja projektu odbędzie się w formie krótkiego gameplaya oraz odpowiedzi prowadzącego na kilka pytań dotyczących projektu (również kodu). Projekt musi być wcześniej przesłany do zatwierdzenia z zachowaniem ustalonego terminu (zostanie ustalony wspólnie ze studentami w trakcie zajęć).
 
-### **3.1 Wymagania odnośnie projektu gry
+### **3.1 Wymagania odnośnie projektu gry**
 
 Tematyka gry jest dowolna pod warunkiem, że nie łamie zasad dobrych obyczajów i ogólnie przyjętych norm społecznych. Jeżeli student nie zaproponuje własnego tematu, prowadzący wskaże temat takiego projektu.
 

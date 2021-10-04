@@ -6,7 +6,7 @@
 
 ### **1. SceneView**
 
-Ten widok to nasza przestrzeń robocza z widokiem na aktualnie aktywną scenę (gra może ich posiadać wiele). Tutaj możemy dodać, edytować, usuwać obiekty gry (GameObject). Tymo ibiektami mogą być modele, kamery, oświetlenie i inne elementy. W momencie kiedy uruchomimy grę (na razie w UnityEditor) możemy również w czasie rzeczywistym dokonywać pewnych zmian na scenie i podglądać jak się zmienia wraz z wydarzeniami zachodzącymi w grze. Po zatrzymaniu gry widok sceny wróci do punktu początkowego.
+Ten widok to nasza przestrzeń robocza z widokiem na aktualnie aktywną scenę (gra może ich posiadać wiele). Tutaj możemy dodać, edytować, usuwać obiekty gry (GameObject). Tymi obiektami mogą być modele 2D i 3D, kamery, oświetlenie itp.. W momencie kiedy uruchomimy grę (na razie w UnityEditor) możemy również w czasie rzeczywistym dokonywać pewnych zmian na scenie i podglądać zmiany w grze w czasie rzeczywistym. Po zatrzymaniu gry widok sceny wróci do punktu początkowego a wprowadzone zmiany nie zostaną zapisane (można jednak temu zaradzić).
 
 ### **2. Inspector Window**
 
@@ -24,7 +24,7 @@ Mimo, że w oknie Project widzimy odbicie struktury zasobów naszego projektu ja
 
 To onko prezentuje wszystkie obiekty jakie są aktualnie umieszczone w naszej grze. Nazwa okna nawiązuje również do sposobu w jaki ta lista jest zaprezentowana - możemy zobaczyć które obiekty są obiektami nadrzędnymi i podrzędnymi. 
 
-### **5. Widok kamery
+### **5. Widok kamery**
 
 Na powyższym zrzucie ekranu aktywnym obiektem jest domyślnie umieszczana kamera w każdej nowej scenie. Zmiana parametrów kamery będzie wpływała na to co w tym oknie widać, co pozwala na ustawienie optymalnej pozycji. Podobnie będzie wyglądał również widok z podglądem na okno gry.
 
@@ -40,7 +40,7 @@ Wciśnięcie i przytrzymanie prawego klawisza pozwala na wykonywanie obrotu wido
 
 Klawiszami, które pozwalają na zmianę trybu pracy tego narzędzia są również **Ctrl** oraz **Alt**. Sprawdź ich działanie w połączeniu z wciśniętym lewym lub prawym klawiszem myszy.
 Sprawdź również działanie wciśniętego prawego klawisza myszy oraz klawiszy **"WASD"**.
-Jeżeli prędkość przesuwania widoku sceny nas nie zadowala możemy to przyspieszyć trzymając wciśnięty klawisz **SHIFT**.
+Jeżeli prędkość przesuwania widoku sceny nas nie zadowala możemy to przyspieszyć trzymając wciśnięty klawisz **Shift**.
 
 Istnieje też możliwość przywołania narzędzia Hand "na chwilę" poprzez wciśnięcie i przytrzymanie kółka myszy, możemy przesunąć widok a po zwolnieniu przycisku powrócimy do wcześniej aktywnego narzędzia.
 
