@@ -19,7 +19,7 @@ Obiekt `Transform` przechowuje również informacje o wszystkich obiektach potom
 
 Właściwości komponentu `Transform` obiektów potomnych są podawane względem obiektu rodzica. Wartości te określa się jako lokalne współrzędne. Czasami potrzeba jednak określić w jakiej pozycji globalnej znajduje się obiekt podrzędny i dlatego API Unity pozwala na konwersję lokalnych koordynatów na koordynaty globalne.
 
-Istnieją sytuacje, w których skalowanie niejednolite (wartości dla wszystkich osi nie są równe) obiektu nadrzędnego może mieć niespodziewane konsekwencje. Więcej przeczytasz pod adresem [Non-uniform transform](https://docs.unity3d.com/Manual/class-Transform.html) w podrozdziale "Limitations with Non-Uniform Scaling".
+Istnieją sytuacje, w których skalowanie niejednolite (wartości dla wszystkich osi nie są równe) obiektu nadrzędnego może mieć niespodziewane konsekwencje. Więcej przeczytasz pod adresem [Non-uniform transform](https://docs.unity3d.com/2019.4/Documentation/Manual/class-Transform.html) w podrozdziale "Limitations with Non-Uniform Scaling".
 
 Dobrą praktyką jest ustawienie obiektu rodzica w pozycji (0,0,0) przed dodaniem potomków co spowoduje ustawianie pozycji potomków również na wartość (0,0,0) - pamiętajmy, że jako lokalne koordynaty.
 
@@ -29,7 +29,7 @@ Jest to komponent, który pobiera siatkę z zasobów (ang. assets) i przekazuje 
 
 ### **Komponent Mesh Renderer**
 
-Ten komponent odpowiada za wyświetlenie przekazanej przez Mesh Filter siatki i wyświetla obiekt w pozycji określownej przez komponent `Transform`. Ten komponent pozwala na wybór materiału, którym ma być pokryta siatka, tego czy przedmiot rzuca cień, czy na obiekt może padać cień oraz kilka innych ustawień związanych z oświetleniem (więcej: [Mesh Renderer](https://docs.unity3d.com/Manual/class-MeshRenderer.html)).
+Ten komponent odpowiada za wyświetlenie przekazanej przez Mesh Filter siatki i wyświetla obiekt w pozycji określownej przez komponent `Transform`. Ten komponent pozwala na wybór materiału, którym ma być pokryta siatka, tego czy przedmiot rzuca cień, czy na obiekt może padać cień oraz kilka innych ustawień związanych z oświetleniem (więcej: [Mesh Renderer](https://docs.unity3d.com/2019.4/Documentation/Manual/class-MeshRenderer.html)).
 
 ### **Komponent Box Collider**
 
@@ -45,7 +45,7 @@ Dzięki temu komponentowi możliwe jest wykrywanie kolizji obiektów oraz wyzwal
    ![Piramida](pyramid.png)
 
 
-Więcej możesz przeczytać w oficjalnej dokumentacji Unity: [GameObjects](https://docs.unity3d.com/Manual/GameObjects.html)
+Więcej możesz przeczytać w oficjalnej dokumentacji Unity: [GameObjects](https://docs.unity3d.com/2019.4/Documentation/Manual/GameObjects.html)
 
 ## 2. Prefabrykaty.
 
@@ -71,14 +71,14 @@ Zadania
 4. Dodaj kilka kopii prefabrykatu do sceny. Przejdź do edycji prefabrykatu i zmień układ jego elementów. Jakie zmiany zaszły na scenie ?
 5. Teraz zmień lub dodaj nowy komponent do jednej z instancji prefabrykatu i zastosuj zmiany do prefabrykatu. Sprawdź czy zmiany zostały zastosowane do innych instancjach. 
 6. Dodaj kolejną instancję prefabrykatu, dokonaj zmian w modelu np. obrót, skala jednego z jego elementów (ale nie edytując prefabrykatu tylko tę instancję). Czy zmiana pozycji jednego z elementów instancji ma wpływ na inne instancje ? Czy takie zmiany można nadpisać do prefabrykatu ?
-7. Przeciągnij zmodyfikowaną instancję do miejsca gdzie zapisany był poprzedni prefabrykat. Okno, które się pojawi da możliwość utworzenia wariantu prefabrykatu (ang. Prefab Variant). Poczytaj więcej pod adresem: https://docs.unity3d.com/Manual/PrefabVariants.html i stwórz nowy wariant prefabrykatu.
+7. Przeciągnij zmodyfikowaną instancję do miejsca gdzie zapisany był poprzedni prefabrykat. Okno, które się pojawi da możliwość utworzenia wariantu prefabrykatu (ang. Prefab Variant). Poczytaj więcej pod adresem: https://docs.unity3d.com/2019.4/Documentation/Manual/PrefabVariants.html i stwórz nowy wariant prefabrykatu.
 8. Poprzez Package Manager zainstaluj Pro Builder oraz Pro Grids (tu trzeba włączyć wyświetlanie Preview packages z opcji Advanced). Następnie obejrzyj https://www.youtube.com/watch?v=PUSOg5YEflM oraz https://www.youtube.com/watch?v=YtzIXCKr8Wo&t. Możesz też poszukać dokumentacji. 
-9. Za pomocą narzędzia Pro Builder stwórz model wieży zamkowej na wzór tej spod adresu https://imgur.com/r/lowpoly/X1oBRy8
+9. Za pomocą narzędzia Pro Builder stwórz model wieży zamkowej na wzór tej spod adresu https://imgur.com/r/lowpoly/X1oBRy8. Zadanie polega na próbie odwzorowania kształtu a nie materiału i ustawień oświetlenia.
 
-Manual narzędzia ProBuilder można znaleźć pod adresem: https://docs.unity3d.com/Packages/com.unity.probuilder@4.3/manual/index.html
+Manual narzędzia ProBuilder można znaleźć pod adresem: https://docs.unity3d.com/Packages/com.unity.probuilder@4.5/manual/index.html
 
 
 
-Cały rozdział poświęcony prefabrykatom: https://docs.unity3d.com/Manual/Prefabs.html
+Cały rozdział poświęcony prefabrykatom: https://docs.unity3d.com/2019.4/Documentation/Manual/Prefabs.html
 
 Tutorial poświęcony zagnieżdżonym prefabrykatom: https://learn.unity.com/tutorial/introduction-to-nested-prefabs#
