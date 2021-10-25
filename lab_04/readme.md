@@ -324,3 +324,6 @@ Dodaj do skryptu ```LookAround``` ograniczenie obracania kamery do -90 i +90 sto
 
 **Zadanie 5**  
 Stwórz nowy obiekt na scenie imitujący płytę naciskową. Po wejściu na nią (kolizja ?) gracz powinien zostać wyrzucony w powietrze z trzykrotnie większą "siłą" niż w przypadku skoku.
+
+**Zadanie 6**  
+Stwórz nowy obiekt, który będzie obiektem przeszkodą, dodaj do niego tag. Stwórz z tego obiektu prefabrykat i dodaj kilka instancji prefabrykatu do sceny w różnych miejscach płaszczyzny. Dodaj do obiektu gracza skrypt, który będzie zawierał kod sprawdzający czy doszło do kontaktu pomiędzy graczem a przeszkodą (można wyszukiwać obiekty za pomocą tagu). Wyświetlaj komunikat o kontakcie w konsoli.

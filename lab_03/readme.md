@@ -253,9 +253,6 @@ Stwórz nową scenę. Dodaj do niej obiekt typu Cube o wymiarach (2, 1, 1). Napi
 Rozbuduj skrypt z zadania 2 (ale zapisz wszystko w nowym skrypcie), tak aby obiekt poruszał się 'po kwadracie' o boku 10 jednostek i docierając do wierzchołka wykonywał obrót o 90 stopni w kierunku kolejnego wierzchołka. 
 
 **Zadanie 4**  
-Dodaj nową scenę do swojego projektu. Stwórz obiekt, który będzie obiektem gracza (cube, sphere, cokolwiek).  Dodaj do sceny płaszczyznę o wymiarach 20x20 jednostek. Dodaj możliwość przemieszczania obiektu po płaszczyźnie. Stwórz nowy obiekt, który będzie obiektem przeszkodą, dodaj do niego tag. Stwórz z tego obiektu prefabrykat i dodaj kilka instancji prefabrykatu do sceny w różnych miejscach płaszczyzny. Dodaj do obiektu gracza skrypt, który będzie zawierał kod sprawdzający czy doszło do kontaktu pomiędzy graczem a przeszkodą (można wyszukiwać obiekty za pomocą tagu). Wyświetlaj komunikat o kontakcie w konsoli.
-
-**Zadanie 5**  
 Wykorzystując możliwość dodawania obiektów czasie wykonania (zobacz: https://docs.unity3d.com/Manual/InstantiatingPrefabs.html) stórz nową scenę a w niej:
 * dodaj płaszczyznę o wymiarach 10x10
 * w momencie uruchomienia trybu play generuj 10 obiektów typu Cube, które umieszczaj losowo na płaszczyźnie, ale tak, żeby w danym miejscu nie znalazł się więcej niż jeden obiekt.
